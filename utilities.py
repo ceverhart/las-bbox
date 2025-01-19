@@ -6,15 +6,14 @@ def readlasdir(lasdir):
     laspath = Path(lasdir)
     return list(laspath.glob('**/*.la[z,s]'))
 
+# Get path to folder with LAS/Z files from the user
 def getlaspath():
-    path = input("Enter path to LAS/LAZ files: ")
-    laspath = Path(path)
-
-    while not laspath.exists():
-        path = input("Enter path to LAS/LAZ files: ")
-        laspath = Path(path)
-    else:
-        return laspath
+    while True:
+        laspath = Path(input("Enter path to LAS/LAZ files: "))
+        if laspath.exists():
+            return laspath
+        else:
+            print("Invalid folder path.")
 
 # TODO: Create metadata folder
 # TODO: Copy header_field_properties.py file to metadata folder
