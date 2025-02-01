@@ -15,6 +15,16 @@ def getlaspath():
         else:
             print("Invalid folder path.")
 
-# TODO: Create metadata folder
-# TODO: Copy header_field_properties.py file to metadata folder
+# TODO: Create output folder (metadata, product, other)
+def createoutputdir(parentpath, dirname='las_',dirype=None):
+    # TODO: catch exception and log error if unable to create output path
+    parpath = Path(parentpath)
+    if Path(parentpath).exists():
+        outdirpath = parpath.joinpath(dirname)
+        outdirpath.mkdir()
+            
+# Find output dir. Will have a las.ini file
+    
+
+# TODO: Copy las.ini file to metadata folder
 
