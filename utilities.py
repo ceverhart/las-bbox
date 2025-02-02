@@ -1,4 +1,5 @@
 import glob
+import shutil
 from pathlib import Path
 
 # Get LAS/LAZ file path list from directory
@@ -22,9 +23,25 @@ def createoutputdir(parentpath, dirname='las_',dirype=None):
     if Path(parentpath).exists():
         outdirpath = parpath.joinpath(dirname)
         outdirpath.mkdir()
-            
-# Find output dir. Will have a las.ini file
-    
 
-# TODO: Copy las.ini file to metadata folder
+# Initialize the las metadata project
+def initproject(lasdir, initemplatepath):
+    projectini = getproject(lasdir)
+
+    # Need to copy ini template file to the las directory
+    if projectini is None:
+        lasinipath = lasdir.joinpath('las.ini')
+
+        # Copy las.ini file to metadata folder
+        shutil.copy(initemplatepath,lasinipath)
+        
+# Get the current las.ini config file
+def getproject(lasdir):
+    laspath = Path(lasdir)
+    lasinipath = laspath.joinpath('las.ini')
+
+    if not lasinipath.exists():
+        lasinipath = None
+
+    return lasinipath
 
