@@ -45,3 +45,8 @@ def getproject(lasdir):
 
     return lasinipath
 
+def getfilename(laspath):
+    fpath = Path(laspath)
+    fname = fpath.name
+    return fname
+

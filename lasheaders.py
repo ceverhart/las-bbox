@@ -1,9 +1,10 @@
 import utilities as lasutils
 import header as lasheader
 
+# ini template path
+inipath = r'C:\Development\geospatialdm\src\las\config\las.ini'
+
 if __name__ == "__main__":
-    # ini template path
-    inipath = r'C:\Development\geospatialdm\src\las\config\las.ini'
 
     # Get system path from the user
     lasdir = lasutils.getlaspath()
@@ -15,5 +16,9 @@ if __name__ == "__main__":
     laspaths = lasutils.readlasdir(lasdir)
 
     # Iterate LAS/Z path values, get header fields
+    alllasdata = []
     for laspath in laspaths:
-        lasval = lasheader.getheaderfields(laspath)
+        lasdata = lasheader.collectheaderdata(laspath)
+        lasdata['filename'] = lasutils.getfilename(laspath)
+        alllasdata.append(lasdata)
+    print(alllasdata)
