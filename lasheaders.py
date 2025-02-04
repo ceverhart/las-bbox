@@ -16,9 +16,15 @@ if __name__ == "__main__":
     laspaths = lasutils.readlasdir(lasdir)
 
     # Iterate LAS/Z path values, get header fields
-    alllasdata = []
+    lasdata = []
     for laspath in laspaths:
-        lasdata = lasheader.collectheaderdata(laspath)
-        lasdata['filename'] = lasutils.getfilename(laspath)
-        alllasdata.append(lasdata)
-    print(alllasdata)
+        lashead = lasheader.collectheaderdata(laspath)
+        lashead['filename'] = lasutils.getfilename(laspath)
+        lasdata.append(lashead)
+
+    # Pass to function that will generate output
+    print(lasdata)
+
+    # Create the output folder
+    outdirmsg = lasutils.createoutputdir(lasdir, dirname='las_bbox',dirype=None)
+    print(outdirmsg)
