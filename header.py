@@ -4,7 +4,7 @@ LAS/LAZ file heder tools
 import laspy
 
 def getheader(laspath):
-    lasfile = laspy.read(laspath)
+    lasfile = laspy.open(laspath)
     return lasfile.header
 
 def getfield(laspath, fieldname):
