@@ -18,7 +18,7 @@ def getlaspath():
 
 # TODO: Create output folder (metadata, product, other)
 def createoutputdir(parentpath, dirname='las_',dirype=None):
-    # TODO: catch exception and log error if unable to create output path
+    # Catch exception and log error if unable to create output path
     parpath = Path(parentpath)
     if Path(parentpath).exists():
         outdirpath = parpath.joinpath(dirname)
