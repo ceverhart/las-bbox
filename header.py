@@ -19,11 +19,10 @@ def getheaderfields(laspath):
     return lasfields
 
 def getboundingcoords(laspath):
-    boundingcoords = {'xmin': None,'xmax': None,'ymin': None,'ymax': None}
     header = getheader(laspath)
     mins = header.mins
     maxs = header.maxs
-    boundingcoords = {'xmin': mins[0].item(),'xmax': maxs[0].item(),'ymin': mins[0].item(),'ymax': maxs[1].item()}
+    boundingcoords = {'minx': mins[0].item(), 'miny': mins[1].item(),'maxx': maxs[0].item(),'maxy': maxs[1].item()}
     return boundingcoords
 
 def collectheaderdata(laspath):
