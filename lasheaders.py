@@ -1,5 +1,6 @@
 import utilities as lasutils
 import header as lasheader
+import output as lasoutput
 
 # ini template path
 inipath = r'C:\Development\geospatialdm\src\las\config\las.ini'
@@ -16,15 +17,19 @@ if __name__ == "__main__":
     laspaths = lasutils.readlasdir(lasdir)
 
     # Iterate LAS/Z path values, get header fields
-    lasdata = []
+    lasdata = lasheader.getheaderdatashell()
     for laspath in laspaths:
         lashead = lasheader.collectheaderdata(laspath)
-        lashead['filename'] = lasutils.getfilename(laspath)
-        lasdata.append(lashead)
-
-    # Pass to function that will generate output
-    print(lasdata)
+        for key in lashead.keys():
+            if key == 'filename':
+                lasname = lasutils.getfilename(laspath)
+                lasdata['filename'].append(lasname)
+            else:
+                lasdata[key].append(lashead[key])
 
     # Create the output folder
-    outdirmsg = lasutils.createoutputdir(lasdir, dirname='las_bbox',dirype=None)
-    print(outdirmsg)
+    outdir = lasutils.createoutputdir(lasdir, dirname='las_bbox',dirype=None)
+    print(outdir)
+
+    # Pass to function that will generate output
+    lasoutput.headeroutput(lasdata, outdir)

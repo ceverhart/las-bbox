@@ -25,9 +25,15 @@ def getboundingcoords(laspath):
     boundingcoords = {'minx': mins[0].item(), 'miny': mins[1].item(),'maxx': maxs[0].item(),'maxy': maxs[1].item()}
     return boundingcoords
 
-def collectheaderdata(laspath):
+def getheaderdatashell(fields=None):
     # Collect file data, name and bounding coordinates default
-    headerdata = {'filename':'','boundingcoords':None}
+    headerdata = {'filename':[],'boundingcoords':[]}
+
+    return headerdata
+
+def collectheaderdata(laspath, fields=None):
+    # Collect file data, name and bounding coordinates default
+    headerdata = {'filename':None,'boundingcoords':None}
     
     headerdata['boundingcoords'] = getboundingcoords(laspath)
 

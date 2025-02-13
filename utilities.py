@@ -27,9 +27,9 @@ def createoutputdir(parentpath, dirname='las_',dirype=None):
         try:
             outdirpath.mkdir()
         except FileExistsError:
-            result = "exists"
+            result = outdirpath
         else:
-            result = "created"
+            result = outdirpath
     return result
 
 # Initialize the las metadata project
