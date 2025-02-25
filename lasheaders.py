@@ -3,7 +3,7 @@ import header as lasheader
 import output as lasoutput
 
 # ini template path
-inipath = r'C:\Development\geospatialdm\src\las\config\las.ini'
+inipath = r'C:\Development\geospatialdm\src\las\config\las.toml'
 
 if __name__ == "__main__":
 

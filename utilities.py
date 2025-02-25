@@ -1,6 +1,7 @@
 import glob
 import shutil
 from pathlib import Path
+import tomli
 
 # Get LAS/LAZ file path list from directory
 def readlasdir(lasdir):
@@ -38,15 +39,17 @@ def initproject(lasdir, initemplatepath):
 
     # Need to copy ini template file to the las directory
     if projectini is None:
-        lasinipath = lasdir.joinpath('las.ini')
+        lasinipath = lasdir.joinpath('las.toml')
 
         # Copy las.ini file to metadata folder
         shutil.copy(initemplatepath,lasinipath)
+
+        return lasinipath
         
 # Get the current las.ini config file
 def getproject(lasdir):
     laspath = Path(lasdir)
-    lasinipath = laspath.joinpath('las.ini')
+    lasinipath = laspath.joinpath('las.toml')
 
     if not lasinipath.exists():
         lasinipath = None
