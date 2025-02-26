@@ -11,7 +11,10 @@ if __name__ == "__main__":
     lasdir = lasutils.getlaspath()
 
     # Initialize the project, including get or create output path
-    lasutils.initproject(lasdir, inipath)
+    configpath = lasutils.initproject(lasdir, inipath)
+
+    # Load current config
+    configdata = lasutils.readconfig(configpath)
 
     # List of LAS/Z file path values
     laspaths = lasutils.readlasdir(lasdir)
