@@ -28,6 +28,9 @@ def getboundingcoords(laspath):
 def getheaderdatashell(fields=None):
     # Collect file data, name and bounding coordinates default
     headerdata = {'filename':[],'boundingcoords':[]}
+    
+    for fld in fields:
+        headerdata[fld] = []
 
     return headerdata
 
@@ -36,6 +39,9 @@ def collectheaderdata(laspath, fields=None):
     headerdata = {'filename':None,'boundingcoords':None}
     
     headerdata['boundingcoords'] = getboundingcoords(laspath)
+
+    for fld in fields:
+        headerdata[fld] = getfield(laspath, fld)
 
     return headerdata
     

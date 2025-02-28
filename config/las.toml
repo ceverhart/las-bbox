@@ -5,16 +5,17 @@ las.meta.dir=""
 las.product.dir=""
 
 [header]
-x_max=true
-x_min=true
-y_max=true
-y_min=true
 z_max=true
 z_min=true
+point_count=true
+point_format=true
+major_version=true
+minor_version=true
+creation_date=true
+file_source_id=true
 
 [exclude]
 are_points_compressed=true
-creation_date=true
 evlrs=true
 extra_header_bytes=true
 extra_vlr_bytes=true
@@ -22,10 +23,8 @@ file_source_id=true
 generating_software=true
 global_encoding=true
 grow=true
-major_version=true
 max_point_count=true
 maxs=true
-minor_version=true
 mins=true
 number_of_evlrs=true
 number_of_points_by_return=true
@@ -33,8 +32,6 @@ offset_to_point_data=true
 offsets=true
 parse_crs=true
 partial_reset=true
-point_count=true
-point_format=true
 read_evlrs=true
 read_from=true
 remove_extra_dim=true

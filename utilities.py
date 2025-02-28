@@ -33,6 +33,7 @@ def createoutputdir(parentpath, dirname='las_',dirype=None):
             result = outdirpath
     return result
 
+'''
 # Initialize the las metadata project
 def initproject(lasdir, initemplatepath):
     projectini = getproject(lasdir)
@@ -57,14 +58,16 @@ def getproject(lasdir):
         lasinipath = None
 
     return lasinipath
+'''
 
 def getfilename(laspath):
     fpath = Path(laspath)
     fname = fpath.name
     return fname
-
+'''
 def readconfig(configpath):
     with open(configpath,mode='rb') as f:
         config = tomli.load(f)
 
         return config
+'''
